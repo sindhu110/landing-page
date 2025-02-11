@@ -1,11 +1,52 @@
 /* General Reset */
-body, h1, p {
+body, h1, p, ul {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
-/* Background Image */
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+/* Navigation Links */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+/* Hover Effect */
+.navbar ul li a:hover {
+    background: #ff6600;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.5);
+}
+
+/* Hero Section */
 .hero {
     background: url('assets/images/landing-bg.jpg') no-repeat center center/cover;
     height: 60vh; /* Limited height */
@@ -14,17 +55,24 @@ body, h1, p {
     justify-content: center;
     text-align: center;
     color: white;
+    padding-top: 70px; /* To avoid overlap with navbar */
 }
 
 /* Hero Content */
 .hero-content h1 {
     font-size: 3rem;
     font-weight: bold;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.5s forwards;
 }
 
 .hero-content p {
     font-size: 1.5rem;
     margin: 10px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.5s forwards 0.3s;
 }
 
 /* CTA Button */
@@ -32,7 +80,48 @@ body, h1, p {
     display: inline-block;
     background: #ff6600;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 25px;
     text-decoration: none;
     font-size: 1.2rem;
-    border-radius: 5px;}
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1.5s forwards 0.6s;
+}
+
+/* Button Hover Effect */
+.cta-button:hover {
+    background: #cc5500;
+    transform: scale(1.05);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    
+    .cta-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    
+    .navbar {
+        justify-content: center;
+    }
+}
